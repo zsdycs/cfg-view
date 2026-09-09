@@ -1,0 +1,19 @@
+{
+  "name": "cfg-view-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "cfg-view 前端：画面显示 + WebSocket 数据订阅 + 气泡菜单交互 (Vue3 + Vite)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.0",
+    "vite": "^5.4.0"
+  }
+}

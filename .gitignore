@@ -1,0 +1,16 @@
+# 依赖
+node_modules/
+**/node_modules/
+
+# 构建产物
+frontend/dist/
+deploy/dist-client/
+
+# 运行数据
+backend/var/
+
+# 临时/日志
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
