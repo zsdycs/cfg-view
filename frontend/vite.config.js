@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+  // 相对路径：Electron 中通过 file:// 加载 index.html 时也能找到资源
+  base: './',
   plugins: [vue()],
   server: {
     port: 5173,

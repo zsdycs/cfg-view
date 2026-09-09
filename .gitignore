@@ -5,9 +5,15 @@ node_modules/
 # 构建产物
 frontend/dist/
 deploy/dist-client/
+client/dist/
+
+# 客户端组装资源（npm run prep 生成）
+client/web/
+client/backend/
 
 # 运行数据
 backend/var/
+client/var-*/
 
 # 临时/日志
 *.log

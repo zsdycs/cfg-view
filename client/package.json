@@ -1,0 +1,51 @@
+{
+  "name": "cfg-view-client",
+  "version": "1.0.0",
+  "description": "cfg-view 客户端：内嵌画面前端 + 三个后端服务（数据传输/订阅库/业务）(Electron)",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "prep": "node scripts/prepare.js",
+    "icons": "node scripts/make-icons.js",
+    "build-client": "npm run build-client:win-x64",
+    "build-client:win-x64": "electron-builder --win portable --x64 --publish never",
+    "build-client:linux-x64": "electron-builder --linux AppImage --x64 --publish never",
+    "build-client:linux-arm64": "electron-builder --linux AppImage --arm64 --publish never",
+    "dist": "electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.kcc.cfg-view",
+    "productName": "cfg-view",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "extraResources": [
+      { "from": "web", "to": "web" },
+      { "from": "backend", "to": "backend" }
+    ],
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "portable"
+      ]
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "target": [
+        "AppImage"
+      ]
+    }
+  }
+}

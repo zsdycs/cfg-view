@@ -47,6 +47,22 @@ npm run dev        # http://localhost:5173
 cd frontend && npm run build   # 产物在 frontend/dist
 ```
 
+### 4. 客户端软件（Electron 桌面应用，含前端 + 后端三服务）
+
+见 [deploy/README.md#4 客户端软件](./deploy/README.md#4-客户端软件含后端服务)：
+
+```bash
+cd backend  && npm ci
+cd frontend && npm ci && npm run build
+cd client   && npm ci && npm run prep
+cd client   && npm run build-client:win-x64    # Windows 可移植 exe
+cd client   && npm run build-client:linux-x64  # Linux AppImage
+```
+
+GitHub Actions（`.github/workflows/build-release.yml`）会在每次 push 时自动打包
+`cfg-view-win-x64.exe` / `cfg-view-linux-x64.AppImage` / `-linux-arm64.AppImage`
+并发布到 GitHub Releases（版本 tag `v1.0.0-build.N` + 滚动 tag `latest-build`）。
+
 ## 画面数据来源
 
 1. 用 `svg2json.js` 将 SVG 画面转换为 JSON（自动携带交互 / 点名绑定）：

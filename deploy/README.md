@@ -68,24 +68,53 @@ pkg backend/service-subscription/index.js -o bin/service-subscription
 `deploy/pack-client.js` 把前端 `dist` + `backend`（含 node_modules）+ 画面数据
 合成一个自包含目录，提供 `启动客户端.bat`：启动三个后端服务并打开系统浏览器。
 
-方案 B — **Electron 桌面应用**（后续扩展）：
-`deploy/electron/` 预留工程骨架：主进程嵌入前端，随应用启动时
-以子进程拉起三个后端服务（data/business/subscription），退出时统一回收。
+方案 B — **Electron 桌面应用**（`client/`）：
+以 Electron（≥ 37，内置 Node ≥ 22）作为主进程，启动时以子进程方式
+（`ELECTRON_RUN_AS_NODE=1`）拉起三个后端服务，窗口内嵌画面前端。
 
 ```bash
-cd deploy
-node pack-client.js      # 产物在 dist-client/
+# 0. 一次安装（CI 等价：cd backend && npm ci 等）
+cd backend  && npm ci
+cd frontend && npm ci && npm run build   # 产物 frontend/dist
+cd client   && npm ci
+
+# 1. 组装客户端资源（frontend/dist + displays → client/web；backend → client/backend）
+cd client && npm run prep
+
+# 2. 打包
+cd client
+npm run build-client:win-x64      # dist/cfg-view-1.0.0-win-x64.exe（可移植 exe）
+npm run build-client:linux-x64    # dist/cfg-view-1.0.0-linux-x64.AppImage
+npm run build-client:linux-arm64  # 如需 ARM 版
+
+# 本地调试（开发模式）
+cd client && npm start
 ```
 
-打包产物结构：
+产物/布局（electron-builder extraResources，不在 asar 内，便于后端子进程读取）：
 
 ```
-dist-client/
-├── 启动客户端.bat（Windows 双击启动）
-├── web/                 # 前端 dist + displays
-├── backend/             # 三个服务 + node_modules
-└── node.exe             # 捆绑的 Node 运行时（可选）
+cfg-view.exe / cfg-view.AppImage
+└─ resources/
+   ├─ web/          # 前端 dist + displays（file:// 内嵌加载）
+   └─ backend/      # 三服务 + start.js + node_modules（由 Electron 内置 Node 运行时执行）
 ```
+
+要点：
+
+- 后端脚本使用新版 Node fs 同步 API（`readFileSync`/`appendFileSync`/…），
+  因此 Electron 必须内置 Node ≥ 22（本项目锁 electron ^37，内置 Node 22）。
+- 运行数据（事件日志）经 `CFG_VAR_DIR` 指向用户数据目录，避免安装目录只读；
+  三个服务端口可用 `CFG_DATA_PORT` / `CFG_BUSINESS_PORT` / `CFG_SUB_PORT` 覆盖。
+- 退出时主进程用 `taskkill /T`（Windows）回收后端子进程树，避免端口残留。
+- 冒烟测试：`CFG_SMOKE_TEST=1` 时应用启动并加载页面后自动退出（CI 中使用）。
+
+GitHub Actions（`.github/workflows/build-release.yml`，参考 data-in-png 方案）：
+每次 push 触发 → 分别在 windows-latest / ubuntu-latest / ubuntu-24.04-arm 上
+构建 exe / AppImage → 上传 Actions artifact → 发布到 GitHub Releases
+（版本 tag：`v<版本>-build.<运行号>`，滚动 tag：`latest-build`）。
+需要时可在仓库 Settings → Actions → General 打开 Workflow permissions 的
+写入权限（或该仓库已有）以便发布 Release。
 
 ---
 
