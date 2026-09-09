@@ -114,6 +114,7 @@ jobs:
       - name: Smoke test packaged app (Windows)
         if: runner.os == 'Windows'
         continue-on-error: true
+        working-directory: client
         shell: pwsh
         env:
           CFG_VAR_DIR: ${{ runner.temp }}/cfg-view-var
@@ -126,6 +127,7 @@ jobs:
       - name: Smoke test packaged app (Linux)
         if: runner.os == 'Linux'
         continue-on-error: true
+        working-directory: client
         shell: bash
         env:
           CFG_VAR_DIR: ${{ runner.temp }}/cfg-view-var
@@ -137,6 +139,7 @@ jobs:
           echo "AppImage smoke exit=$?"
 
       - name: Collect release asset
+        working-directory: client
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path release-assets | Out-Null
@@ -151,14 +154,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.target_name }}
-          path: release-assets/${{ matrix.release_file }}
+          path: client/release-assets/${{ matrix.release_file }}
           if-no-files-found: error
 
       - name: Publish versioned release asset
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ needs.prepare-release.outputs.versioned_tag }}
-          artifacts: release-assets/${{ matrix.release_file }}
+          artifacts: client/release-assets/${{ matrix.release_file }}
           artifactErrorsFailBuild: true
           allowUpdates: true
           replacesArtifacts: true
@@ -170,7 +173,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ needs.prepare-release.outputs.latest_tag }}
-          artifacts: release-assets/${{ matrix.release_file }}
+          artifacts: client/release-assets/${{ matrix.release_file }}
           artifactErrorsFailBuild: true
           allowUpdates: true
           replacesArtifacts: true
