@@ -80,7 +80,8 @@ node svg2json.js <存放 SVG 的目录>
 |---|---|
 | `p.tag` | 点名（数据点 ID），HT 兼容 |
 | `a.point` | 点名 |
-| `a.pointType` | `string` / `symbolchange` / `colourchange` / `stringchange` / `ipmSymChange` / `bangtuchange` |
+| `a.pointType` | `string` / `symbolchange` / `colourchange` / `stringchange` / `ipmSymChange` / `bangtuchange` / `onoff` |
+| `a.onoff` | 图形开关量（`onoff` 类型）：`{ on, off }` 1=绿 0=红（颜色尽量取原图及图内代表色） |
 | `a.pointStates` | 状态列表（颜色 / 文本 / 符号 ID） |
 | `a.menu` / `a.menuPoint` | 右键菜单（strMenu） |
 | `a.hyperLink` | 画面跳转目标 |

@@ -86,7 +86,8 @@
 
 <script>
 import { api } from '../services/api.js';
-import { ws } from '../services/ws';
+import { ws } from '../services/ws.js';
+import { cfg } from '../config.js';
 import { renderDisplay } from '../display/render.js';
 import { symbolToProps, matrixAttr } from '../display/symbols.js';
 import BubbleMenu from './BubbleMenu.vue';
@@ -200,6 +201,18 @@ export default {
         const t = a.pointType;
         if (t === 'string') {
           if (rec.setText) rec.setText(String(value));
+        } else if (t === 'onoff') {
+          // 开关量/模拟量：非零即“开”（绿），零即“关”（红）
+          const onoff = a.onoff || { on: '#00f800', off: '#f80000' };
+          const on = this.isOn(value);
+          // 背景色切色；边框也一样处理
+          if (rec.el) {
+            if (rec.el.tagName === 'path') {
+              const hasStroke = rec.el.getAttribute('stroke') && rec.el.getAttribute('stroke') !== 'none';
+              if (hasStroke) rec.el.setAttribute('stroke', on ? onoff.on : onoff.off);
+              else rec.el.setAttribute('fill', on ? onoff.on : onoff.off);
+            }
+          }
         } else if (t === 'colourchange') {
           const states = a.pointStates || [];
           const idx = this.stateIndex(value, states.length);
@@ -222,6 +235,13 @@ export default {
     stateIndex(value, len) {
       if (typeof value === 'number') return Math.max(0, Math.min(Math.floor(value), Math.max(len - 1, 0)));
       return 0;
+    },
+    /** onoff 开关判定：数字非零/字符串为真(1/ture/on/开)视为开 */
+    isOn(value) {
+      if (value === undefined || value === null) return false;
+      if (typeof value === 'number') return value !== 0;
+      const s = String(value).toLowerCase().trim();
+      return s === '1' || s === 'true' || s === 'on' || s === 'open' || s === '开' || s === '运行';
     },
     /** 切换 symbolchange 状态图层可见性 */
     switchStateLayer(bindKey, idx) {
@@ -290,7 +310,7 @@ export default {
   },
   async mounted() {
     await this.refreshDisplays();
-    const initName = this.current || (this.displays.length ? this.displays[0].name : '');
+    const initName = this.current || cfg.defaultDisplay || (this.displays.length ? this.displays[0].name : '');
     if (initName) {
       this.current = initName;
       await this.load(initName);

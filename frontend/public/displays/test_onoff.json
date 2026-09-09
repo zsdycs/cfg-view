@@ -1,0 +1,530 @@
+{
+  "v": "7.7.2-dev3",
+  "p": {
+    "layers": [
+      {
+        "name": "0",
+        "visible": true,
+        "selectable": true,
+        "movable": true,
+        "editable": true
+      }
+    ],
+    "autoAdjustIndex": true,
+    "hierarchicalRendering": true
+  },
+  "a": {
+    "width": 400,
+    "height": 200
+  },
+  "d": [
+    {
+      "c": "ht.Shape",
+      "i": 1001,
+      "p": {
+        "position": {
+          "x": 200,
+          "y": 100
+        },
+        "width": 400,
+        "height": 200,
+        "segments": {
+          "__a": [
+            1,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            5
+          ]
+        },
+        "points": {
+          "__a": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 400,
+              "y": 0
+            },
+            {
+              "x": 400,
+              "y": 0
+            },
+            {
+              "x": 400,
+              "y": 0
+            },
+            {
+              "x": 400,
+              "y": 200
+            },
+            {
+              "x": 400,
+              "y": 200
+            },
+            {
+              "x": 400,
+              "y": 200
+            },
+            {
+              "x": 0,
+              "y": 200
+            },
+            {
+              "x": 0,
+              "y": 200
+            },
+            {
+              "x": 0,
+              "y": 200
+            },
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+      },
+      "s": {
+        "type": "shape",
+        "opacity": 1,
+        "shape.background": "#101010",
+        "shape.border.color": null,
+        "shape.dash.pattern": [
+          16,
+          16
+        ]
+      }
+    },
+    {
+      "c": "ht.Shape",
+      "i": 1002,
+      "p": {
+        "position": {
+          "x": 70,
+          "y": 70
+        },
+        "width": 80,
+        "height": 60,
+        "segments": {
+          "__a": [
+            1,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            5
+          ]
+        },
+        "points": {
+          "__a": [
+            {
+              "x": 30,
+              "y": 40
+            },
+            {
+              "x": 110,
+              "y": 40
+            },
+            {
+              "x": 110,
+              "y": 40
+            },
+            {
+              "x": 110,
+              "y": 40
+            },
+            {
+              "x": 110,
+              "y": 100
+            },
+            {
+              "x": 110,
+              "y": 100
+            },
+            {
+              "x": 110,
+              "y": 100
+            },
+            {
+              "x": 30,
+              "y": 100
+            },
+            {
+              "x": 30,
+              "y": 100
+            },
+            {
+              "x": 30,
+              "y": 100
+            },
+            {
+              "x": 30,
+              "y": 40
+            },
+            {
+              "x": 30,
+              "y": 40
+            },
+            {
+              "x": 30,
+              "y": 40
+            }
+          ]
+        },
+        "tag": "VALVE_A"
+      },
+      "s": {
+        "type": "shape",
+        "opacity": 1,
+        "shape.background": "#00f800",
+        "shape.border.color": null,
+        "shape.dash.pattern": [
+          16,
+          16
+        ]
+      },
+      "a": {
+        "interactive": true,
+        "bindKey": "g611_VALVE_A",
+        "point": "VALVE_A",
+        "pointType": "onoff",
+        "menuPoint": "VALVE_A",
+        "menu": true,
+        "onoff": {
+          "on": "#00f800",
+          "off": "#f80000"
+        }
+      }
+    },
+    {
+      "c": "ht.Shape",
+      "i": 1003,
+      "p": {
+        "position": {
+          "x": 190,
+          "y": 70
+        },
+        "width": 80,
+        "height": 60,
+        "segments": {
+          "__a": [
+            1,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            5
+          ]
+        },
+        "points": {
+          "__a": [
+            {
+              "x": 150,
+              "y": 40
+            },
+            {
+              "x": 230,
+              "y": 40
+            },
+            {
+              "x": 230,
+              "y": 40
+            },
+            {
+              "x": 230,
+              "y": 40
+            },
+            {
+              "x": 230,
+              "y": 100
+            },
+            {
+              "x": 230,
+              "y": 100
+            },
+            {
+              "x": 230,
+              "y": 100
+            },
+            {
+              "x": 150,
+              "y": 100
+            },
+            {
+              "x": 150,
+              "y": 100
+            },
+            {
+              "x": 150,
+              "y": 100
+            },
+            {
+              "x": 150,
+              "y": 40
+            },
+            {
+              "x": 150,
+              "y": 40
+            },
+            {
+              "x": 150,
+              "y": 40
+            }
+          ]
+        },
+        "tag": "PUMP_B"
+      },
+      "s": {
+        "type": "shape",
+        "opacity": 1,
+        "shape.background": "#f80000",
+        "shape.border.color": null,
+        "shape.dash.pattern": [
+          16,
+          16
+        ]
+      },
+      "a": {
+        "interactive": true,
+        "bindKey": "g612_PUMP_B",
+        "point": "PUMP_B",
+        "pointType": "onoff",
+        "menuPoint": "PUMP_B",
+        "menu": true,
+        "onoff": {
+          "on": "#00f800",
+          "off": "#f80000"
+        }
+      }
+    },
+    {
+      "c": "ht.Shape",
+      "i": 1004,
+      "p": {
+        "position": {
+          "x": 300,
+          "y": 70
+        },
+        "width": 80,
+        "height": 60,
+        "segments": {
+          "__a": [
+            1,
+            4,
+            4,
+            4,
+            4,
+            5
+          ]
+        },
+        "points": {
+          "__a": [
+            {
+              "x": 300,
+              "y": 40
+            },
+            {
+              "x": 322.09139,
+              "y": 40
+            },
+            {
+              "x": 340,
+              "y": 53.43146
+            },
+            {
+              "x": 340,
+              "y": 70
+            },
+            {
+              "x": 340,
+              "y": 86.56854
+            },
+            {
+              "x": 322.09139,
+              "y": 100
+            },
+            {
+              "x": 300,
+              "y": 100
+            },
+            {
+              "x": 277.90861,
+              "y": 100
+            },
+            {
+              "x": 260,
+              "y": 86.56854
+            },
+            {
+              "x": 260,
+              "y": 70
+            },
+            {
+              "x": 260,
+              "y": 53.43146
+            },
+            {
+              "x": 277.90861,
+              "y": 40
+            },
+            {
+              "x": 300,
+              "y": 40
+            }
+          ]
+        },
+        "tag": "MOTOR_C"
+      },
+      "s": {
+        "type": "shape",
+        "opacity": 1,
+        "shape.background": "#808080",
+        "shape.border.color": null,
+        "shape.dash.pattern": [
+          16,
+          16
+        ]
+      },
+      "a": {
+        "interactive": true,
+        "bindKey": "g613_MOTOR_C",
+        "point": "MOTOR_C",
+        "pointType": "onoff",
+        "menuPoint": "MOTOR_C",
+        "menu": true,
+        "onoff": {
+          "on": "#00f800",
+          "off": "#f80000"
+        }
+      }
+    },
+    {
+      "c": "ht.Shape",
+      "i": 1005,
+      "p": {
+        "position": {
+          "x": 70,
+          "y": 150
+        },
+        "width": 80,
+        "height": 40,
+        "segments": {
+          "__a": [
+            1,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            5
+          ]
+        },
+        "points": {
+          "__a": [
+            {
+              "x": 30,
+              "y": 130
+            },
+            {
+              "x": 110,
+              "y": 130
+            },
+            {
+              "x": 110,
+              "y": 130
+            },
+            {
+              "x": 110,
+              "y": 130
+            },
+            {
+              "x": 110,
+              "y": 170
+            },
+            {
+              "x": 110,
+              "y": 170
+            },
+            {
+              "x": 110,
+              "y": 170
+            },
+            {
+              "x": 30,
+              "y": 170
+            },
+            {
+              "x": 30,
+              "y": 170
+            },
+            {
+              "x": 30,
+              "y": 170
+            },
+            {
+              "x": 30,
+              "y": 130
+            },
+            {
+              "x": 30,
+              "y": 130
+            },
+            {
+              "x": 30,
+              "y": 130
+            }
+          ]
+        },
+        "tag": "LED_D"
+      },
+      "s": {
+        "type": "shape",
+        "opacity": 1,
+        "shape.background": "#4848c8",
+        "shape.border.color": null,
+        "shape.dash.pattern": [
+          16,
+          16
+        ]
+      },
+      "a": {
+        "interactive": true,
+        "bindKey": "g614_LED_D",
+        "point": "LED_D",
+        "pointType": "symbolchange",
+        "pointStates": [
+          "#ipm_15_9",
+          "#ipm_15_6"
+        ],
+        "menuPoint": "LED_D",
+        "menu": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="200" viewBox="0 0 400 200">
+  <rect id="background" x="0" y="0" width="400" height="200" fill="#101010"/>
+  <!-- 绿色图形绑定开关量（应为 on=原绿 #00f800, off=代表红） -->
+  <g layer="0">
+    <a>
+      <rect x="30" y="40" width="80" height="60" fill="#00F800" stroke="none" onload="setdata(this.evt.target,'VALVE_A','string');" onmousedown="strMenu(this,'VALVE_A');" ActType="1"/>
+    </a>
+  </g>
+  <!-- 红色图形绑定开关量（应为 off=原红, on=代表绿） -->
+  <g layer="0">
+    <a>
+      <rect x="150" y="40" width="80" height="60" fill="#F80000" stroke="none" onload="setdata(this.evt.target,'PUMP_B','string');" onmousedown="strMenu(this,'PUMP_B');" ActType="1"/>
+    </a>
+  </g>
+  <!-- 灰色图形绑定（应 on=代表绿 off=代表红） -->
+  <g layer="0">
+    <a>
+      <ellipse cx="300" cy="70" rx="40" ry="30" fill="#808080" stroke="none" onload="setdata(this.evt.target,'MOTOR_C','string');" onmousedown="strMenu(this,'MOTOR_C');" ActType="1"/>
+    </a>
+  </g>
+  <!-- 蓝色图形绑定 symbolchange 不应受影响 -->
+  <g layer="0">
+    <a>
+      <rect x="30" y="130" width="80" height="40" fill="#4848C8" stroke="none" onload="setdata(this.evt.target,'LED_D','symbolchange:#ipm_15_9 #ipm_15_6');" onmousedown="strMenu(this,'LED_D');" ActType="1"/>
+    </a>
+  </g>
+  <defs>
+    <symbol id="ipm_15_9" viewBox="-25 -25 50 50"><rect x="-25" y="-25" width="50" height="50" fill="#80F880"/></symbol>
+    <symbol id="ipm_15_6" viewBox="-25 -25 50 50"><rect x="-25" y="-25" width="50" height="50" fill="#006800"/></symbol>
+  </defs>
+</svg>
